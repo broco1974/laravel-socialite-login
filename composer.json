@@ -1,17 +1,20 @@
 {
   "name": "brothersco/laravel-socialite-login",
   "description": "Laravel Socialite Login",
-  "keywords": [],
-  "homepage": "http://www.broco.com/",
+  "keywords": ["laravel", "socialite"],
+  "homepage": "https://github.com/brothersco/laravel-socialite-login",
   "license": "MIT",
   "authors": [
     {
       "name": "Brothers & Company",
-      "email": "interactive@broco.com"
+      "email": "interactive@broco.com",
+      "homepage": "http://www.broco.com/"
+
     },
     {
       "name": "Travis Miller",
-      "email": "tmiller@broco.com"
+      "email": "tmiller@broco.com",
+      "role": "Developer"
     }
   ],
   "require": {
