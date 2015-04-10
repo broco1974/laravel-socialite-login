@@ -28,5 +28,5 @@ Optionally configure:
 References
 ----------
 
-http://www.codeanchor.net/blog/complete-laravel-socialite-tutorial/
-https://github.com/cviebrock/laravel5-package-template
+Inspiration Guide: http://www.codeanchor.net/blog/complete-laravel-socialite-tutorial/  
+Boilerplate: https://github.com/cviebrock/laravel5-package-template  
