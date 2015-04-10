@@ -1,0 +1,33 @@
+{
+  "name": "brothersco/laravel-socialite-login",
+  "description": "Laravel Socialite Login",
+  "keywords": [],
+  "homepage": "http://www.broco.com/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Brothers & Company",
+      "email": "interactive@broco.com"
+    },
+    {
+      "name": "Travis Miller",
+      "email": "tmiller@broco.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/config": "~5.0",
+    "illuminate/support": "~5.0",
+    "illuminate/database": "~5.0",
+    "laravel/socialite": "~2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Broco\\SocialiteLogin\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
