@@ -24,6 +24,7 @@ Optionally configure:
 * _socialite-login.userclass_: The class to use as the application's user object.
 * _socialite-login.intended-redirect.success_: Redirect url on login success.
 * _socialite-login.intended-redirect.failure_: Redirect url on login failure.
+* _socialite-login.limit-access.*_: Access rules (e.g. limit to email domain).
 
 References
 ----------

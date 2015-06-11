@@ -37,6 +37,16 @@ class AuthenticateUser {
 		try
 		{
 			$userData = $this->getSocialUser($provider);
+			$accessConfig = Config::get('socialite-login.limit-access', []);
+			foreach ($accessConfig as $property => $regex)
+			{
+				$value = object_get($userData, $property);
+				if (is_string($value) and preg_match($regex, $value))
+				{
+					continue;
+				}
+				throw new Exception('Access denied.');
+			}
 		}
 		catch (Exception $e)
 		{
