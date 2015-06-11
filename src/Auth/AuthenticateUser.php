@@ -1,5 +1,6 @@
 <?php namespace Broco\SocialiteLogin\Auth;
 
+use \Config;
 use \Exception;
 use Illuminate\Contracts\Auth\Guard;
 use Laravel\Socialite\Contracts\Factory as Socialite;
