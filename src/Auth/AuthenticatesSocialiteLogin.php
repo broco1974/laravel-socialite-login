@@ -8,6 +8,11 @@ trait AuthenticatesSocialiteLogin {
 
 	public function getSocial(AuthenticateUser $authenticateUser, Request $request, $provider)
 	{
+        $allowedProviders = (array) config('socialite-login.allowed-providers');
+        if (!in_array($provider, $allowedProviders)) {
+            abort(404);
+        }
+
 		return $authenticateUser->execute($request->all(), $this, $provider);
 	}
 
