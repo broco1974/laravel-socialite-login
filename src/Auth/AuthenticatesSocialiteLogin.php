@@ -13,14 +13,14 @@ trait AuthenticatesSocialiteLogin {
 
 	public function loginSuccess(AuthenticatableContract $user)
 	{
-		$intended = Config::get('socialite-login.intended-redirect.success');
-		return redirect()->intended($intended);
+		$redirect = Config::get('socialite-login.intended-redirect.success');
+		return redirect($redirect);
 	}
 
 	public function loginFailure($provider, \Exception $e = null)
 	{
-		$intended = Config::get('socialite-login.intended-redirect.failure');
-		return redirect()->intended($intended);
+        $redirect = Config::get('socialite-login.intended-redirect.failure');
+		return redirect($redirect);
 	}
 
 }
