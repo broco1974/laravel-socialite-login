@@ -3,6 +3,7 @@
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Session;
 
 trait AuthenticatesSocialiteLogin {
 
@@ -25,6 +26,8 @@ trait AuthenticatesSocialiteLogin {
 	public function loginFailure($provider, \Exception $e = null)
 	{
         $redirect = Config::get('socialite-login.intended-redirect.failure');
+        Session::flash('error', $e->getMessage());
+
 		return redirect($redirect);
 	}
 
