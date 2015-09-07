@@ -3,24 +3,32 @@
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Session;
 
 trait AuthenticatesSocialiteLogin {
 
 	public function getSocial(AuthenticateUser $authenticateUser, Request $request, $provider)
 	{
+        $allowedProviders = (array) config('socialite-login.allowed-providers');
+        if (!in_array($provider, $allowedProviders)) {
+            abort(404);
+        }
+
 		return $authenticateUser->execute($request->all(), $this, $provider);
 	}
 
 	public function loginSuccess(AuthenticatableContract $user)
 	{
-		$intended = Config::get('socialite-login.intended-redirect.success');
-		return redirect()->intended($intended);
+		$redirect = Config::get('socialite-login.intended-redirect.success');
+		return redirect($redirect);
 	}
 
 	public function loginFailure($provider, \Exception $e = null)
 	{
-		$intended = Config::get('socialite-login.intended-redirect.failure');
-		return redirect()->intended($intended);
+        $redirect = Config::get('socialite-login.intended-redirect.failure');
+        Session::flash('error', $e->getMessage());
+
+		return redirect($redirect);
 	}
 
 }

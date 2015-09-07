@@ -9,13 +9,13 @@ class AuthenticateUser {
 
 	private $socialite;
 	private $auth;
-	private $users;
+	private $user;
 
-	public function __construct(Socialite $socialite, Guard $auth, UserSocialiteRepository $users)
+	public function __construct(Socialite $socialite, Guard $auth, UserSocialiteRepository $user)
 	{
 		$this->socialite = $socialite;
 		$this->auth = $auth;
-		$this->users = $users;
+		$this->user = $user;
 	}
 
 	public function execute($request, $listener, $provider)
@@ -48,16 +48,16 @@ class AuthenticateUser {
 				}
 				throw new Exception('Access denied.');
 			}
-		}
-		catch (Exception $e)
-		{
-			return $listener->loginFailure($provider, $e);
-		}
 
-		$user = $this->users->findOrCreateUser($provider, $userData);
+            $user = $this->user->findOrCreateUser($provider, $userData);
 
-		$remember = true;
-		$this->auth->login($user, $remember);
+            $remember = true;
+            $this->auth->login($user, $remember);
+        }
+        catch (Exception $e)
+        {
+            return $listener->loginFailure($provider, $e);
+        }
 
 		return $listener->loginSuccess($user);
 	}
